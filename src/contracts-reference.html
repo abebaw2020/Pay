@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>የውል ስምምነት ቅጾች</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Ethiopic:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #e0e0e0;
+            font-family: 'Noto Sans Ethiopic', sans-serif;
+            margin: 0;
+            padding: 20px 0;
+            line-height: 1.6;
+        }
+
+        .a4-page {
+            background: white;
+            display: block;
+            margin: 0 auto 30px auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            width: 21cm;
+            min-height: 29.7cm;
+            padding: 1.5cm;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+        }
+
+        h2 {
+            text-align: center;
+            color: #000;
+            font-weight: bold;
+            margin: 0 0 30px 0;
+            border-bottom: 2.5px solid #000;
+            padding-bottom: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            font-size: 1em;
+            margin-bottom: 4px;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        textarea {
+            width: 100%;
+            padding: 6px 2px;
+            border: none;
+            border-bottom: 1.5px dotted #777;
+            background-color: transparent;
+            box-sizing: border-box;
+            font-family: 'Noto Sans Ethiopic', sans-serif;
+            font-size: 1em;
+            transition: border-bottom 0.2s ease-in-out;
+        }
+        
+        input[type="text"]:focus,
+        input[type="date"]:focus,
+        textarea:focus {
+            outline: none;
+            border-bottom: 2px solid #0056b3;
+        }
+        
+        textarea {
+            resize: none;
+        }
+        
+        .grid-container {
+            display: grid;
+            gap: 15px 30px;
+            grid-template-columns: 1fr 1fr;
+        }
+        
+        .full-width {
+            grid-column: 1 / -1;
+        }
+        
+        .agreement-text {
+            margin: 15px 0;
+            font-style: italic;
+        }
+        
+        .signatures {
+            display: grid;
+            gap: 15px 40px;
+            margin-top: auto;
+            padding-top: 25px;
+            border-top: 1px solid #eee;
+        }
+        
+        .signatures.two-cols { grid-template-columns: 1fr 1fr; }
+        .signatures.three-cols { grid-template-columns: 1fr 1fr 1fr; }
+
+        .signature-block {
+            text-align: center;
+        }
+        .signature-block h4 {
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .witnesses {
+            margin-top: 30px;
+        }
+        .witnesses h4 {
+            font-weight: bold;
+        }
+        .witness-line {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .witness-line input {
+            flex-grow: 1;
+            margin-left: 10px;
+        }
+
+        .debt-form-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        .debt-form-list > li {
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        .debt-form-list .input-group {
+            font-weight: normal;
+        }
+        .debt-form-list .grid-container {
+            margin-top: 5px;
+        }
+        .debt-form-list ol {
+            font-weight: normal;
+            padding-left: 30px;
+            margin-top: 8px;
+            list-style-type: 'ሀ)';
+        }
+        .debt-form-list ol li {
+            margin-bottom: 6px;
+        }
+
+        .print-button-container {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .print-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-family: 'Noto Sans Ethiopic', sans-serif;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .print-btn:hover { background-color: #0056b3; }
+
+        @media print {
+            body { background: none; padding: 0; }
+            .a4-page {
+                width: 100%;
+                min-height: 29.7cm;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+                box-shadow: none;
+                border: none;
+            }
+            .print-button-container { display: none; }
+            input, textarea { border-bottom: 1.5px dotted #777 !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="print-button-container">
+        <button class="print-btn" onclick="printPage('rent-contract-page')">የቤት ኪራይ ውል ያትሙ</button>
+    </div>
+
+    <div class="a4-page" id="rent-contract-page">
+        <h2>የቤት ኪራይ ውል ስምምነት</h2>
+        
+        <div class="grid-container">
+            <div class="form-group"><label>አከራይ፡ አቶ/ወ/ሮ/ወ/ሪት</label><input type="text"></div>
+            <div class="form-group"><label>ተከራይ፡ አቶ/ወ/ሮ/ወ/ሪት</label><input type="text"></div>
+            <div class="form-group"><label>አድራሻ</label><input type="text"></div>
+            <div class="form-group"><label>የቤት ቁጥር</label><input type="text"></div>
+        </div>
+
+        <p class="agreement-text">ከዚህ በታች የተጠቀሰውን ንብረት በሚከተለው የአገልግሎትና ገንዘብ መክፈያ ሁኔታ ተስማምቼ ተከራይቻለሁ፡፡</p>
+        
+        <div class="form-group">
+            <label for="property-type">የንብረቱ ዓይነትና ብዛት</label>
+            <textarea id="property-type" rows="2"></textarea>
+        </div>
+        <div class="grid-container">
+            <div class="form-group">
+                <label for="rent-amount">የወር የቤት ኪራይ መጠን (ብር)</label>
+                <input type="text" id="rent-amount">
+            </div>
+            <div class="form-group">
+                <label for="payment-date">የሚከፈልበት የክፍያ ቀን</label>
+                <input type="text" id="payment-date">
+            </div>
+        </div>
+        <div class="form-group">
+            <label>ተጨማሪ ስምምነቶች</label>
+            <textarea rows="4"></textarea>
+        </div>
+
+        <div class="signatures two-cols">
+            <div class="signature-block">
+                <h4>አከራይ</h4>
+                <div class="form-group"><label>ስም</label><input type="text"></div>
+                <div class="form-group"><label>ፊርማ</label><input type="text"></div>
+                <div class="form-group"><label>ቀን</label><input type="date"></div>
+            </div>
+            <div class="signature-block">
+                <h4>ተከራይ</h4>
+                <div class="form-group"><label>ስም</label><input type="text"></div>
+                <div class="form-group"><label>ፊርማ</label><input type="text"></div>
+                <div class="form-group"><label>ቀን</label><input type="date"></div>
+            </div>
+        </div>
+
+        <div class="witnesses">
+            <h4>የአከራይ ምስክሮች</h4>
+            <div class="witness-line">1. <input type="text"></div>
+            <div class="witness-line">2. <input type="text"></div>
+            <div class="witness-line">3. <input type="text"></div>
+        </div>
+    </div>
+
+
+    <div class="print-button-container">
+        <button class="print-btn" onclick="printPage('debt-agreement-page')">የዕዳ መፍጸሚያ ውል ያትሙ</button>
+    </div>
+
+    <div class="a4-page" id="debt-agreement-page">
+        <h2>በሠራተኞች የዕዳ መፍጸሚያ ውል</h2>
+        
+        <ol class="debt-form-list">
+            <li>ውል ሰጪ
+                <div class="input-group grid-container">
+                    <div class="form-group"><label>ስም</label><input type="text"></div>
+                    <div class="form-group"><label>አድራሻ</label><input type="text"></div>
+                    <div class="form-group"><label>የሠራተኛ መለያ ቁ.</label><input type="text"></div>
+                </div>
+            </li>
+            <li>ውል ተቀባይ
+                <div class="input-group grid-container">
+                    <div class="form-group"><label>ስም</label><input type="text"></div>
+                    <div class="form-group"><label>አድራሻ</label><input type="text"></div>
+                    <div class="form-group"><label>ቀበሌ</label><input type="text"></div>
+                </div>
+            </li>
+            <li><label for="agreement-content">የውሉ ይዘት</label><textarea id="agreement-content" rows="2"></textarea></li>
+            <li><label for="payment-by-debtor">በእርሱ የሚደረግ ክፍያ</label><textarea id="payment-by-debtor" rows="2"></textarea></li>
+            <li><label for="payment-method-debt">የአከፋፈል ሁኔታ</label><textarea id="payment-method-debt" rows="2"></textarea></li>
+            <li><label for="debt-start-date">ዕዳው የሚጀመርበት ቀን</label><input type="date" id="debt-start-date"></li>
+            <li><label for="debt-end-date">ዕዳው የሚጠናቀቅበት ጊዜ</label><input type="date" id="debt-end-date"></li>
+            <li>የውል ሰጪ ግዴታዎች
+                <ol><li>በውሉ መሠረት ዕዳው ሲጠናቀቅ የዕዳ ማስታወሻውን መመለስ፤</li></ol>
+            </li>
+            <li>የውል ተቀባይ ግዴታዎች
+                <ol>
+                    <li>ዕዳውን በገባው ቃል መሠረት በተጠቀሰው የጊዜ ገደብ ከፍሎ መጨረስ፤</li>
+                    <li>ዕዳውን ሳይከፍል ከሥራ ለቆ ቢሄድ ውል ሰጪው በወሰደው እርምጃ መሠረት ተገቢውን ክፍያ መፈጸም፤</li>
+                </ol>
+            </li>
+            <li>የዋስ ግዴታዎች
+                <ol>
+                    <li>ውል ተቀባይ በውሉ መሠረት የወሰደውን ዕዳ ሳይከፍል ቢቀር፤</li>
+                    <li>ከእኔው ከዋሱ ላይ ከደመወዜ በቀጥታ እየተቆረጠ እንዲከፈል ተስማምቻለሁ፤</li>
+                    <li>ዕዳው ተከፍሎ እስኪያልቅ ድረስ ከኃላፊነቴ ነፃ እንዳልሆን ተስማምቻለሁ፡፡</li>
+                </ol>
+            </li>
+            <li>ይህ ውል ከ <input type="date" style="width:150px; display:inline-block;"> እስከ <input type="date" style="width:150px; display:inline-block;"> ጸንቶ ይቆያል፡፡</li>
+        </ol>
+
+        <div class="signatures three-cols">
+            <div class="signature-block"><h4>ውል ሰጪ</h4><label>ስም</label><input type="text"><label>ፊርማ</label><input type="text"></div>
+            <div class="signature-block"><h4>ውል ተቀባይ</h4><label>ስም</label><input type="text"><label>ፊርማ</label><input type="text"></div>
+            <div class="signature-block"><h4>ዋስ</h4><label>ስም</label><input type="text"><label>ፊርማ</label><input type="text"></div>
+        </div>
+        
+        <div class="witnesses">
+            <h4>የጋራ ምስክሮች ስምና ፊርማ</h4>
+            <div class="witness-line">1. <input type="text"></div>
+            <div class="witness-line">2. <input type="text"></div>
+            <div class="witness-line">3. <input type="text"></div>
+        </div>
+    </div>
+
+    <script>
+        function printPage(pageId) {
+            const pageToPrint = document.getElementById(pageId);
+            if (!pageToPrint) return;
+
+            const allPages = document.querySelectorAll('.a4-page');
+            allPages.forEach(page => {
+                if (page.id !== pageId) {
+                    page.style.display = 'none';
+                }
+            });
+            
+            const allButtons = document.querySelectorAll('.print-button-container');
+            allButtons.forEach(button => button.style.display = 'none');
+
+            window.print();
+
+            allPages.forEach(page => {
+                page.style.display = 'flex';
+            });
+            allButtons.forEach(button => {
+                button.style.display = 'block';
+            });
+        }
+    </script>
+</body>
+</html>
