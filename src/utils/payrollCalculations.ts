@@ -1,5 +1,5 @@
 import { formatDate } from "./formatters"
-import type { PayrollData, PayrollEntry, CustomRates, PayrollPeriodResult } from "../types/payroll"
+import type { PayrollData, PayrollEntry, CustomRates, PayrollPeriodResult, CustomExpense } from "../types/payroll"
 
 const addDays = (date: Date, days: number): Date => {
   const result = new Date(date)
@@ -7,15 +7,16 @@ const addDays = (date: Date, days: number): Date => {
   return result
 }
 
-export function generatePayrollData(startDate: Date, endDate: Date, customRates: CustomRates): PayrollData {
+export function generatePayrollData(startDate: Date, endDate: Date, customRates: CustomRates, customExpenses: CustomExpense[] = []): PayrollData {
   const data = {
     gm: [] as PayrollEntry[],
     laborer1: [] as PayrollEntry[],
     laborer2: [] as PayrollEntry[],
     transport: [] as PayrollEntry[],
+    customExpenses: customExpenses,
   }
 
-  const totals = { gm: 0, laborer1: 0, laborer2: 0, transport: 0, overall: 0 }
+  const totals = { gm: 0, laborer1: 0, laborer2: 0, transport: 0, customExpenses: 0, overall: 0 }
   const duration = (endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24) + 1
 
   for (let i = 0; i < Math.ceil(duration / customRates.gmDays); i++) {
@@ -80,7 +81,10 @@ export function generatePayrollData(startDate: Date, endDate: Date, customRates:
     totals.transport += customRates.transportRate
   })
 
-  totals.overall = totals.gm + totals.laborer1 + totals.laborer2 + totals.transport
+  // Calculate custom expenses total
+  totals.customExpenses = customExpenses.reduce((sum, expense) => sum + expense.amount, 0)
+  
+  totals.overall = totals.gm + totals.laborer1 + totals.laborer2 + totals.transport + totals.customExpenses
 
   return { data, totals, duration }
 }
@@ -90,8 +94,9 @@ export function generateSinglePeriodPayrollData(
   startDate: Date,
   endDate: Date,
   customRates: CustomRates,
+  customExpenses: CustomExpense[] = [],
 ): PayrollPeriodResult {
-  const payrollData = generatePayrollData(startDate, endDate, customRates)
+  const payrollData = generatePayrollData(startDate, endDate, customRates, customExpenses)
   const netProfit = incomeAmount - payrollData.totals.overall
 
   return {
